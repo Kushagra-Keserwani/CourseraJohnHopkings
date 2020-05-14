@@ -10,7 +10,7 @@ $scope.message ="";
 $scope.checkTooMuch = function(){
 	var a = $scope.meal.split(",");
 	
-	if(a.length - numberOfStringsNotHavingAnything(a) >3){
+	if(a.length - emptyNumber(a) >3){
 		$scope.message ="Too much!";
 		}
 	else if($scope.meal == ""){
@@ -28,21 +28,21 @@ $scope.checkTooMuch = function(){
 
 })
 
-function numberOfStringsNotHavingAnything(a){
+function emptyNumber(a){
 	var count =0;
 	for(var i=0;i<a.length;i++){
-		if(!(hasChar(a[i])))
+		if(hasNoChar(a[i]))
 			count++;
 	}
 	return count;
 }
-function hasChar(b){
+function hasNoChar(b){
 	
 	for(var i=0;i<b.length;i++){
-		if(b.charCodeAt(i) != 13) // if string consist only of spaces it is an empty string , 13 is ASCII code for string
-				return true;
+		if(b.charCodeAt(i) != 32) // if string consist only of spaces it is an empty string , 32 is ASCII code for space
+				return false;
 	}
-	return false;
+	return true;
 }
 
 
